@@ -32,6 +32,7 @@ class CustomersList extends Component {
 
     render() {
         const {customerData} = this.state
+        console.log(customerData)
       return(
         <div className='customer-list-container '>
             <div className='container'>

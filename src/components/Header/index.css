@@ -1,5 +1,5 @@
 .header-container {
-  background-color: brown;
+  background-color: #A52A2A;
   width: 100%;
   display: flex;
   align-items: center;
@@ -13,7 +13,7 @@
   font-weight: 500;
   font-size: 26px;
   text-align: center;
-  color: white;
+  color: #ffffffff;
   padding-left: 20px;
   padding-right: 12px;
 }
@@ -31,7 +31,7 @@
   font-weight: 500;
   font-size: 18px;
   text-align: center;
-  color: white;
+  color: #ffffffff;
   padding-left: 12px;
   padding-right: 30px;
 }
@@ -49,7 +49,7 @@
   font-weight: 500;
   font-size: 14px;
   text-align: center;
-  color: white;
+  color: #ffffffff;
   padding-left: 12px;
   padding-right: 8px;
 }
