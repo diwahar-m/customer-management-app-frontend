@@ -1,12 +1,7 @@
 import { Component } from 'react'
-
-
-
-import CustomerContact  from '../CustomerContact'
-
-
-
 import './index.css'
+import CustomerContact from '../CustomerContact';
+
 
 class CustomerDetails extends Component {
   state = { customerData: {}}
@@ -16,9 +11,9 @@ class CustomerDetails extends Component {
   }
 
   getCustomerItemData = async () => {
-    const {customerData} = this.state
-    const {customerId} = customerData
-    const response = await fetch(`http://localhost:8085/api/${customerId}`)
+    const {customerId} = this.state
+    const response = await fetch(`http://localhost:8085/api/selectCustomerById/${customerId}`)
+    console.log(response)
     const data = await response.json()
 
     const updatedData = {
@@ -40,17 +35,39 @@ class CustomerDetails extends Component {
     this.setState({ customerData: updatedData})
   }
 
+  renderPersonalDetails = () => {
+    const {firstName, lastName, gender, dob} = this.state
+    return(
+      <div className='personal-details-container'>
+        <div className='name-container'>
+          <p>First Name</p>
+          <p>{firstName}</p>
+        </div>
+        <div className='name-container'>
+          <p>Last Name</p>
+          <p>{lastName}</p>
+        </div>
+        <div className='name-container'>
+          <p>Gender</p>
+          <p>{gender}</p>
+        </div>
+        <div className='name-container'>
+          <p>Date of Birth</p>
+          <p>{dob}</p>
+        </div>
+      </div>
+    )
+  }
 
-
+ 
   render() {
     const {customerData} = this.state
     return (
       <div className="blog-container">
-        <div className="customer-info">
-            <CustomerContact customerData={customerData}/>
-            <hr  className ="horizontal-line" />
-
-      </div>
+        <CustomerContact customerData={customerData}/>
+        <hr className ="horizontal-line" />
+        <h1>Personal Details</h1>
+        {this.renderPersonalDetails()}
       </div>
     )
   }
