@@ -1,8 +1,8 @@
-import CustomerPage from './components/CustomerPage';
+import Customers from './components/Customers';
 import './App.css';
 
 const App = () => (
-    <CustomerPage />
+    <Customers />
 )
 
 export default App
