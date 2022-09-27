@@ -11,6 +11,7 @@
   background-color: #ffffff;
   width: 30%;
   min-height: 100vh;
+  margin-right: 15px;
 }
 
 .customer-search-input-container {
@@ -95,6 +96,15 @@
     background-color: #dfe0e2;
     border-radius: 10px;
     border: none;
-    
- 
+}
+
+.info-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.customer-details-container {
+  display: flex;
+  background-color: #ffffffff;
+  margin: 15px;
 }

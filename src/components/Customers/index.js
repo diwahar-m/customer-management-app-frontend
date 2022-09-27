@@ -6,6 +6,7 @@ import ListHeader from '../ListHeader'
 import Header from '../Header'
 import './index.css'
 import CustomerItem from '../CustomerItem'
+import CustomerPersonalDetails from '../CustomerPersonalDetails'
 
 const sortbyOptions = [
     {
@@ -115,19 +116,24 @@ class Customers extends Component {
         return (
           <div className="customers-container">
             <Header />
-            <div className="customers-list-container">
-                <div className="customer-search-input-container">
-                    {this.renderSearchInput()}
-                </div>
-                <hr className="horizontal-line" />
-                <ListHeader
-                    activeOptionId={activeOptionId}
-                    sortbyOptions={sortbyOptions}
-                    changeSortby={this.changeSortby}
-                />
-                <div className="customer-list-container">
-                    {this.renderCustomersList()}
-                </div>
+            <div className="info-container">
+              <div className="customers-list-container">
+                  <div className="customer-search-input-container">
+                      {this.renderSearchInput()}
+                  </div>
+                  <hr className="horizontal-line" />
+                  <ListHeader
+                      activeOptionId={activeOptionId}
+                      sortbyOptions={sortbyOptions}
+                      changeSortby={this.changeSortby}
+                  />
+                  <div className="customer-list-container">
+                      {this.renderCustomersList()}
+                  </div>
+              </div>
+              <div className="customer-details-container">
+                  <CustomerPersonalDetails />
+              </div>
             </div>
           </div>
         )

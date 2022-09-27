@@ -1,8 +1,11 @@
 import Customers from './components/Customers';
+
 import './App.css';
 
 const App = () => (
-    <Customers />
+    <>
+        <Customers />
+    </>
 )
 
 export default App

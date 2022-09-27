@@ -4,7 +4,7 @@ import { VscTriangleDown} from "react-icons/vsc";
 const Header = () => {
     return (
         <div className="header-container">
-            <p className='header-title'>Project Name</p>
+           <p className='header-title'>Project Name</p>
             <div className='profile-container'>
                 <p className='profile-title'>Customer Admin</p>
                 <div className='profile'>
