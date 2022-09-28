@@ -6,7 +6,7 @@ import ListHeader from '../ListHeader'
 import Header from '../Header'
 import './index.css'
 import CustomerItem from '../CustomerItem'
-import CustomerPersonalDetails from '../CustomerPersonalDetails'
+import CustomersPersonalDetails from '../CustomersPersonalDetails'
 
 const sortbyOptions = [
     {
@@ -132,7 +132,7 @@ class Customers extends Component {
                   </div>
               </div>
               <div className="customer-details-container">
-                  <CustomerPersonalDetails />
+                  <CustomersPersonalDetails />
               </div>
             </div>
           </div>

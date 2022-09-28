@@ -7,7 +7,7 @@ import { RiDeleteBinLine} from "react-icons/ri";
 import './index.css'
 
 
-class CustomerPersonalDetails extends Component {
+class CustomersPersonalDetails extends Component {
   state = {customerDetails: {}}
 
   componentDidMount() {
@@ -15,32 +15,37 @@ class CustomerPersonalDetails extends Component {
   }
 
   getcustomerDetails = async () => {
-     const {match} = this.props
-    const {params} = match
-    const url = `http://localhost:8085/api/selectCustomers/${params.customerId}`
-    const options = {
+    const {customerDetails} = this.state
+    const {customerId} = customerDetails
+    const url = `http://localhost:8085/api/selectCustomerById?id=${customerId}}`
+   // const url = `http://localhost:8085/api/selectCustomerById/024f74e0-3cf1-11ed-9438-bd9a732dd2c5`
+    
+     const options = {
       method: 'GET',
-    }
-    const response = await fetch(url, options)
+      header:{'Accept':'application/json',
+      'Content-Type':'application/json'}
+    } 
+    const response = await fetch(url,options)
+    console.log(response)
     if (response.ok) {
       const fetchedData = await response.json()
-      const formatedData = fetchedData.map(eachcustomer => ({
-        customerId: eachcustomer.customer_id,
-        firstName: eachcustomer.first_name,
-        lastName: eachcustomer.last_name,
-        userName: eachcustomer.user_name,
-        email: eachcustomer.email,
-        phone: eachcustomer.phone,
-        dob: eachcustomer.dob,
-        gender: eachcustomer.gender,
-        addressId: eachcustomer.address_id,
-        address: eachcustomer.address,
-        landmark: eachcustomer.landmark,
-        state: eachcustomer.city,
-        location: eachcustomer.state,
-        country: eachcustomer.country,
-        zipcode: eachcustomer.zipcode,
-      }))
+      const formatedData = {
+        customerId: fetchedData.customerDetails.customer_id,
+        firstName: fetchedData.customerDetails.first_name,
+        lastName: fetchedData.customerDetails.last_name,
+        userName: fetchedData.customerDetails.user_name,
+        email: fetchedData.customerDetails.email,
+        phone: fetchedData.customerDetails.phone,
+        dob: fetchedData.customerDetails.dob,
+        gender: fetchedData.customerDetails.gender,
+        addressId: fetchedData.customerDetails.address_id,
+        address: fetchedData.customerDetails.address,
+        landmark: fetchedData.customerDetails.landmark,
+        state: fetchedData.customerDetails.city,
+        location: fetchedData.customerDetails.state,
+        country: fetchedData.customerDetails.country,
+        zipcode: fetchedData.customerDetails.zipcode,
+      }
 
       this.setState({
         customerDetails: formatedData,
@@ -82,15 +87,74 @@ class CustomerPersonalDetails extends Component {
     
   }
 
+  renderPersonalDetails = () => {
+    const {customerDetails} = this.state
+    const {firstName, lastName, gender, dob} = customerDetails
+    return(
+      <div className='personal-details'>
+        <h1 className='heading'>Personal Details</h1>
+        <div className='person-self-info'>
+          
+              <div className='self-info-container'>
+                  <p className='person'>First Name</p>
+                  <p className='info'>{firstName}</p>
+              </div>
+              <div className='self-info-container'>
+                  <p className='person'>Last Name</p>
+                  <p className='info'>{lastName}</p>
+              </div>
+              <div className='self-info-container'>
+                  <p className='person'>Gender</p>
+                  <p className='info'>{gender}</p>
+              </div>
+              <div className='self-info-container'>
+                  <p className='person'>Date of Birth</p>
+                  <p className='info'>{dob}</p>
+              </div>
+        </div>
+        
+      </div>
+    )
+  }
+
+  renderAddressDetails = () => {
+    const {customerDetails} = this.state
+    const {address, landmark, city, state} = customerDetails
+    return(
+      <div className='address-details'>
+        <h1 className='heading'>Address</h1>
+        <div className='address-info'>
+          <div className='address1'>
+            <p>Address line 1</p>
+            <p>{address}</p>
+          </div>
+          <div className='address2'>
+            <p>Landmark</p>
+            <p>{landmark}</p>
+          </div>
+          <div className='address1'>
+            <p>City</p>
+            <p>{city}</p>
+          </div>
+          <div className='address2'>
+            <p>State</p>
+            <p>{state}</p>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   render() {
     return (
-      <div className="customer--responsive-container ">
-        <div className="customer--contact-container ">
-            {this.renderCustomerContact()}
-        </div>
+      <div className="customer-responsive-container ">
+        {this.renderCustomerContact()}
+        <hr className='hr'/>
+        {this.renderPersonalDetails()}
+        {this.renderAddressDetails()}
       </div>
     )
   }
 }
 
-export default CustomerPersonalDetails
+export default CustomersPersonalDetails
