@@ -15,9 +15,9 @@ class CustomersPersonalDetails extends Component {
   }
 
   getcustomerDetails = async () => {
-    const {customerDetails} = this.state
-    const {customerId} = customerDetails
-    const url = `http://localhost:8085/api/selectCustomerById?id=${customerId}}`
+    const {match} = this.props
+    const {params} = match
+    const url = `http://localhost:8085/api/selectCustomerById?id=${params.customerId}}`
    // const url = `http://localhost:8085/api/selectCustomerById/024f74e0-3cf1-11ed-9438-bd9a732dd2c5`
     
      const options = {
